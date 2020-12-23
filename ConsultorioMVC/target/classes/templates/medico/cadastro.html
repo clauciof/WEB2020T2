@@ -64,7 +64,7 @@
 					
 					<div class="form-group col-md-6">
 						<label th:text="#{login.password}" for="password"></label> 
-						<input type="text" class="form-control" id="password" autofocus="autofocus"
+						<input type="text" class="form-control" id="password" placeholder="" autofocus="autofocus"
 							th:field="*{password}" 
 							th:classappend="${#fields.hasErrors('password')} ? is-invalid" />
 							
@@ -74,13 +74,13 @@
 					</div>
 					
 					<div class="form-group col-md-6">
-						<label th:text="#{medico.especialidade.label}" for="especialidade"></label> 
-						<input type="text" class="form-control" id="CRM" autofocus="autofocus"
-							th:field="*{especialidade}"
-							th:classappend="${#fields.hasErrors('especialidade')} ? is-invalid" />
+						<label th:text="#{medico.especialidade.label}" for="Especialidade"></label> 
+						<input type="text" class="form-control" id="Especialidade" autofocus="autofocus"
+							th:field="*{Especialidade}"
+							th:classappend="${#fields.hasErrors('Especialidade')} ? is-invalid" />
 							
 						<div class="invalid-feedback">
-							<span th:errors="*{especialidade}"></span>
+							<span th:errors="*{Especialidade}"></span>
 						</div>
 					</div>
 					

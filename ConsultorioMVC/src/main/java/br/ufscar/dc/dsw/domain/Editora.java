@@ -1,4 +1,4 @@
-package br.ufscar.dc.dsw.domain;
+/*package br.ufscar.dc.dsw.domain;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class Editora extends AbstractEntity<Long> {
 	private String nome;
 
 	@OneToMany(mappedBy = "editora")
-	private List<Livro> livros;
+	private List<Paciente> livros;
 	
 	public String getCNPJ() {
 		return CNPJ;
@@ -43,11 +43,11 @@ public class Editora extends AbstractEntity<Long> {
 		this.nome = nome;
 	}
 
-	public List<Livro> getLivros() {
+	public List<Paciente> getLivros() {
 		return livros;
 	}
 
-	public void setLivros(List<Livro> livros) {
+	public void setLivros(List<Paciente> livros) {
 		this.livros = livros;
 	}
-}
+}*/

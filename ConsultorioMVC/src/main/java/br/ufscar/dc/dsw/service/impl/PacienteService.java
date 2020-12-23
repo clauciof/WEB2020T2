@@ -6,31 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.ufscar.dc.dsw.dao.IMedicoDAO;
+import br.ufscar.dc.dsw.dao.IPacienteDAO;
 import br.ufscar.dc.dsw.dao.IUsuarioDAO;
-import br.ufscar.dc.dsw.domain.Medico;
+import br.ufscar.dc.dsw.domain.Paciente;
 import br.ufscar.dc.dsw.domain.Usuario;
-import br.ufscar.dc.dsw.service.spec.IMedicoService;
+import br.ufscar.dc.dsw.service.spec.IPacienteService;
 
 @Service
 @Transactional(readOnly = false)
-public class MedicoService implements IMedicoService {
+public class PacienteService implements IPacienteService {
 
 	@Autowired
-	IMedicoDAO dao;
+	IPacienteDAO dao;
 	@Autowired
 	IUsuarioDAO usuariodao;
 	
-	
-	
-	public void salvar(Medico medico) {
-		dao.save(medico);
+	public void salvar(Paciente paciente) {
+		dao.save(paciente);
 		
 		Usuario usuario = new Usuario();
-		usuario.setUsername(medico.getUsername());
-		usuario.setPassword(medico.getPassword());
-		usuario.setName(medico.getName());
-		usuario.setRole("ROLE_ME");
+		usuario.setUsername(paciente.getLogin());
+		usuario.setPassword(paciente.getSenha());
+		usuario.setName(paciente.getNome());
+		usuario.setRole("ROLE_PA");
 		usuario.setEnabled(true);
 		usuariodao.save(usuario);
 	}
@@ -40,14 +38,12 @@ public class MedicoService implements IMedicoService {
 	}
 
 	@Transactional(readOnly = true)
-	public Medico buscarPorId(Long id) {
+	public Paciente buscarPorId(Long id) {
 		return dao.findById(id.longValue());
 	}
 
 	@Transactional(readOnly = true)
-	public List<Medico> buscarTodos() {
+	public List<Paciente> buscarTodos() {
 		return dao.findAll();
 	}
-	
-	
 }

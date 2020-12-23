@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.ufscar.dc.dsw.domain.Editora;
+import br.ufscar.dc.dsw.dao.IUsuarioDAO;
 import br.ufscar.dc.dsw.domain.Medico;
+import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.service.spec.IMedicoService;
+
+
 
 
 @Controller
@@ -23,6 +26,8 @@ public class MedicosAdmController {
 	
 	@Autowired
 	private IMedicoService service;
+	private IUsuarioDAO usuarioDAO;
+	
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Medico medico) {

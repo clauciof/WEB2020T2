@@ -1,6 +1,6 @@
 package br.ufscar.dc.dsw;
 
-import java.math.BigDecimal;
+
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -9,10 +9,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.ufscar.dc.dsw.dao.IMedicoDAO;
-import br.ufscar.dc.dsw.dao.ILivroDAO;
+import br.ufscar.dc.dsw.dao.IPacienteDAO;
 import br.ufscar.dc.dsw.dao.IUsuarioDAO;
-import br.ufscar.dc.dsw.domain.Editora;
-import br.ufscar.dc.dsw.domain.Livro;
+
 import br.ufscar.dc.dsw.domain.Medico;
 import br.ufscar.dc.dsw.domain.Usuario;
 
@@ -24,7 +23,7 @@ public class LivrariaMvcApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder, IMedicoDAO medicoDAO, ILivroDAO livroDAO) {
+	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder, IMedicoDAO medicoDAO, IPacienteDAO livroDAO) {
 		return (args) -> {
 			
 			Usuario u1 = new Usuario();
@@ -60,9 +59,17 @@ public class LivrariaMvcApplication {
 			m1.setPassword("senha");
 			m1.setEnabled(true);
 			m1.setEspecialidade("Clinico Geral");
-			m1.setCRM("45635875373");
+			m1.setCRM("456358753-7/BR");
 			
 			medicoDAO.save(m1);
+			Usuario usuario = new Usuario();
+			usuario.setUsername(m1.getName());
+			usuario.setPassword(encoder.encode(m1.getPassword()));
+			usuario.setName(m1.getName());
+			usuario.setRole("ROLE_ME");
+			usuario.setEnabled(true);
+			
+			usuarioDAO.save(usuario);
 			
 			Medico m2 = new Medico();
 			m2.setName("Diego");
@@ -70,9 +77,18 @@ public class LivrariaMvcApplication {
 			m2.setPassword("senha");
 			m2.setEnabled(true);
 			m2.setEspecialidade("Gastro");
-			m2.setCRM("45655875373");
+			m2.setCRM("45655875-3/BR");
 			
 			medicoDAO.save(m2);
+			
+			Usuario usuario2 = new Usuario();
+			usuario2.setUsername(m2.getName());
+			usuario2.setPassword(encoder.encode(m2.getPassword()));
+			usuario2.setName(m2.getName());
+			usuario2.setRole("ROLE_ME");
+			usuario2.setEnabled(true);
+			
+			usuarioDAO.save(usuario2);
 			
 			
 			Medico m3 = new Medico();
@@ -81,9 +97,18 @@ public class LivrariaMvcApplication {
 			m3.setPassword("senha");
 			m3.setEnabled(true);
 			m3.setEspecialidade("Otorrino");
-			m3.setCRM("32235875373");
+			m3.setCRM("32235875-3/BR");
 			
 			medicoDAO.save(m3);
+			
+			Usuario usuario3 = new Usuario();
+			usuario3.setUsername(m3.getName());
+			usuario3.setPassword(encoder.encode(m3.getPassword()));
+			usuario3.setName(m3.getName());
+			usuario3.setRole("ROLE_ME");
+			usuario3.setEnabled(true);
+			
+			usuarioDAO.save(usuario3);
 			
 			Medico m4 = new Medico();
 			m4.setName("Bruna");
@@ -91,9 +116,19 @@ public class LivrariaMvcApplication {
 			m4.setPassword("senha");
 			m4.setEnabled(true);
 			m4.setEspecialidade("Oftamologista");
-			m4.setCRM("00635875374");
+			m4.setCRM("00635875-3/BR");
 			
 			medicoDAO.save(m4);
+			
+			
+			Usuario usuario4 = new Usuario();
+			usuario4.setUsername(m4.getName());
+			usuario4.setPassword(encoder.encode(m4.getPassword()));
+			usuario4.setName(m4.getName());
+			usuario4.setRole("ROLE_ME");
+			usuario4.setEnabled(true);
+			
+			usuarioDAO.save(usuario4);
 			
 		
 			
