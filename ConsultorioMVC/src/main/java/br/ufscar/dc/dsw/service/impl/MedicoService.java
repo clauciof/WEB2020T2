@@ -3,6 +3,7 @@ package br.ufscar.dc.dsw.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,10 +26,10 @@ public class MedicoService implements IMedicoService {
 	
 	public void salvar(Medico medico) {
 		dao.save(medico);
-		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Usuario usuario = new Usuario();
 		usuario.setUsername(medico.getUsername());
-		usuario.setPassword(medico.getPassword());
+		usuario.setPassword(encoder.encode(medico.getPassword()));
 		usuario.setName(medico.getName());
 		usuario.setRole("ROLE_ME");
 		usuario.setEnabled(true);

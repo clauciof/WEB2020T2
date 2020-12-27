@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import br.ufscar.dc.dsw.dao.IPacienteDAO;
 import br.ufscar.dc.dsw.dao.IUsuarioDAO;
 import br.ufscar.dc.dsw.domain.Paciente;
@@ -21,12 +21,13 @@ public class PacienteService implements IPacienteService {
 	@Autowired
 	IUsuarioDAO usuariodao;
 	
+	
 	public void salvar(Paciente paciente) {
 		dao.save(paciente);
-		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Usuario usuario = new Usuario();
 		usuario.setUsername(paciente.getLogin());
-		usuario.setPassword(paciente.getSenha());
+		usuario.setPassword((encoder.encode(paciente.getSenha())));
 		usuario.setName(paciente.getNome());
 		usuario.setRole("ROLE_PA");
 		usuario.setEnabled(true);
