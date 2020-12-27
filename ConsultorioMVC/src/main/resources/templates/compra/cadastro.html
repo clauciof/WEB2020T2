@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html layout:decorate="~{layout}">
+<html layout:decorate="~{layout}" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 <head>
 </head>
 <body>
@@ -9,11 +10,11 @@
 			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active"><i class="oi oi-caret-right"></i>
-						<span th:text="#{compra.cadastrar.label}"></span></li>
+						<span th:text="#{consulta.cadastrar.label}"></span></li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/compras/listar}"
+				<a class="btn btn-primary btn-md" th:href="@{/consultaspa/listar}"
 					role="button"> <span class="oi oi-spreadsheet" title="Listar"
-					aria-hidden="true"></span> <span th:text="#{compra.listar.label}"></span>
+					aria-hidden="true"></span> <span th:text="#{consulta.listar.label}"></span>
 				</a>
 			</div>
 		</nav>
@@ -22,7 +23,7 @@
 
 			<div th:replace="fragments/alert"></div>
 
-			<form th:action="@{/compras/salvar}" th:object="${compra}"
+			<form th:action="@{/consultaspa/salvar}" th:object="${consulta}"
 				method="POST">
 
 				<div th:replace="fragments/validacao :: validacao"></div>
@@ -35,35 +36,56 @@
 							<thead>
 								<tr>
 									<th>#</th>
-									<th th:text="#{livro.titulo.label}"></th>
-									<th th:text="#{livro.autor.label}"></th>
-									<th th:text="#{livro.editora.label}"></th>
-									<th th:text="#{livro.ano.label}"></th>
-									<th th:text="#{livro.preco.label}"></th>
+									<th th:text="#{medico.nome.label}"></th>
+									<th th:text="#{medico.crm.label}"></th>
+									<th th:text="#{medico.especialidade.label}"></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="livro : ${livros}">
+								<tr th:each="medico : ${medicos}">
 									<td>
-										<input type="radio" th:id="${livro.id}" name="livro" th:value="${livro.id}" th:field="*{livro}" required>
+										<input type="radio" th:id="${medico.id}" name="medico" th:value="${medico.id}" th:field="*{medico}" required>
 									</td>
-									<td th:text="${livro.titulo}"></td>
-									<td th:text="${livro.autor}"></td>
-									<td th:text="${livro.editora.nome}"></td>
-									<td th:text="${livro.ano}"></td>
-									<td th:text="|R$ ${#numbers.formatDecimal(livro.preco,2,2,'COMMA')}|"></td>
+									<td th:text="${medico.name}"></td>
+									<td th:text="${medico.crm}"></td>
+									<td th:text="${medico.especialidade}"></td>
+									
 								</tr>
 							</tbody>
 						</table>
+						
+						<div class="form-group col-md-6">
+							<label th:text="Data" for="data"></label> 
+							<input type="text" class="form-control" id="data" autofocus="autofocus"
+								th:field="*{data}" placeholder="dd/mm/aaaa"
+								th:classappend="${#fields.hasErrors('data')} ? is-invalid" />
+								
+							<div class="invalid-feedback">
+								<span th:errors="*{data}"></span>
+							</div>
+						</div>
+						
+						
+						<div class="form-group col-md-6">
+							<label th:text="Hora" for="hora"></label> 
+							<input type="text" class="form-control" id="hora" autofocus="autofocus"
+								th:field="*{hora}" placeholder="hh:mm"
+								th:classappend="${#fields.hasErrors('hora')} ? is-invalid" />
+								
+							<div class="invalid-feedback">
+								<span th:errors="*{hora}"></span>
+							</div>
+						</div>
 
 						<div class="invalid-feedback">
-							<span th:errors="*{livro}"></span>
+							<span th:errors="*{medico}"></span>
 						</div>
 					</div>
 				</div>
 
 				<button type="submit" th:text="#{button.salvar.label}"
 					class="btn btn-primary btn-sm"></button>
+				
 			</form>
 		</div>
 	</section>

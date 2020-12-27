@@ -59,7 +59,7 @@ public class LivrariaMvcApplication {
 			m1.setPassword("senha");
 			m1.setEnabled(true);
 			m1.setEspecialidade("Clinico Geral");
-			m1.setCRM("456358753-7/BR");
+			m1.setCrm("456358753-7/BR");
 			
 			medicoDAO.save(m1);
 			Usuario usuario = new Usuario();
@@ -77,7 +77,7 @@ public class LivrariaMvcApplication {
 			m2.setPassword("senha");
 			m2.setEnabled(true);
 			m2.setEspecialidade("Gastro");
-			m2.setCRM("45655875-3/BR");
+			m2.setCrm("45655875-3/BR");
 			
 			medicoDAO.save(m2);
 			
@@ -97,7 +97,7 @@ public class LivrariaMvcApplication {
 			m3.setPassword("senha");
 			m3.setEnabled(true);
 			m3.setEspecialidade("Otorrino");
-			m3.setCRM("32235875-3/BR");
+			m3.setCrm("32235875-3/BR");
 			
 			medicoDAO.save(m3);
 			
@@ -116,7 +116,7 @@ public class LivrariaMvcApplication {
 			m4.setPassword("senha");
 			m4.setEnabled(true);
 			m4.setEspecialidade("Oftamologista");
-			m4.setCRM("00635875-3/BR");
+			m4.setCrm("00635875-3/BR");
 			
 			medicoDAO.save(m4);
 			

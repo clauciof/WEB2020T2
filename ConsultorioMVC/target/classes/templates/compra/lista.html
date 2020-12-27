@@ -14,7 +14,7 @@
 						<span th:text="#{consulta.listar.label}"></span>
 					</li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/compras/cadastrar}" role="button"> 
+				<a class="btn btn-primary btn-md" th:href="@{/consultaspa/cadastrar}" role="button"> 
 					<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
 					<span th:text="#{consulta.cadastrar.label}"></span>
 				</a>
@@ -30,23 +30,22 @@
 					<thead>
 						<tr>
 							<th class="bg-warning">#</th>
-							<th class="bg-warning" th:text="#{paciente.nome.label}"></th>
-							<th class="bg-warning" th:text="#{paciente.login.label}"></th>
-							<th class="bg-warning" th:text="#{paciente.cpf.label}"></th>
+							<th class="bg-warning" th:text="#{consulta.data.label}"></th>
+							<th class="bg-warning" th:text="#{consulta.hora.label}"></th>
 							<th class="bg-warning" th:text="#{medico.nome.label}"></th>
-							<th class="bg-warning" th:text="#{consulta.datahora.label}"></th>
+							<th class="bg-warning" th:text="#{medico.crm.label}"></th>
+							
 							
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="consulta : ${consultas}">
-							<td th:text="${consulta.id}"></td>
+						
+						<td th:text="${consulta.id}"></td>
 							<td th:text="${consulta.data}"></td>
-							<td th:text="${consulta.livro.titulo}"></td>
-							<td th:text="${consulta.livro.autor}"></td>
-							<td th:text="${consulta.livro.editora.nome}"></td>
-							<td th:text="${consulta.livro.ano}"></td>
-							<td th:text="|R$ ${#numbers.formatDecimal(compra.valor,2,2,'COMMA')}|"></td>
+							<td th:text="${consulta.hora}"></td>
+							<td th:text="${consulta.medico.name}"></td>
+							<td th:text="${consulta.medico.crm}"></td>						
 						</tr>
 					</tbody>
 				</table>

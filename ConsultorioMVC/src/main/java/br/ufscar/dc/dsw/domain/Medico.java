@@ -28,7 +28,7 @@ public class Medico extends AbstractEntity<Long> {
     
     @NotBlank
     @Column(nullable = false, length = 20)
-    private String CRM;
+    private String crm;
     
     @Column(nullable = false)
     private boolean enabled;
@@ -58,12 +58,12 @@ public class Medico extends AbstractEntity<Long> {
 	}
 	
 	
-	public String getCRM() {
-		return CRM;
+	public String getCrm() {
+		return crm;
 	}
 
-	public void setCRM(String crm) {
-		CRM = crm;
+	public void setCrm(String crm) {
+		this.crm = crm;
 	}
 	
 	public String getEspecialidade() {

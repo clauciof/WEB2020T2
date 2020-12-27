@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import br.ufscar.dc.dsw.domain.Compra;
+import br.ufscar.dc.dsw.domain.Consulta;
 import br.ufscar.dc.dsw.domain.Usuario;
 
 @SuppressWarnings("unchecked")
-public interface ICompraDAO extends CrudRepository<Compra, Long>{
+public interface ICompraDAO extends CrudRepository<Consulta, Long>{
 
-	Compra findById(long id);
+	Consulta findById(long id);
 
-	List<Compra> findAllByUsuario(Usuario u);
+	List<Consulta> findAllByUsuario(Usuario u);
 	
-	Compra save(Compra compra);
+	Consulta save(Consulta compra);
 }
