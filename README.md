@@ -17,7 +17,8 @@ Usuário: beltrano@email, senha: 123, role: ROLE_PA
 Usuário: ciclano@email, senha: 123, role: ROLE_ME            
 
 ```
-O banco utiliza a senha 'password', altere a senha na variável spring.datasource.password no arquivo /src/main/resources/application.properties para a senha utilizada no seu banco local, se necessário.
+O banco utiliza a senha 'password', altere a senha na variável spring.datasource.password no arquivo /src/main/resources/application.properties 
+para a senha utilizada no seu banco local, se necessário.
 
 ### Execução
 compilar:
