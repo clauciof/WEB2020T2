@@ -23,8 +23,8 @@ localizada no arquivo /src/main/resources/application.properties
 para a senha utilizada no seu banco local.
 
 ### Execução
-compilar:
-  No diretório do projeto executar no temrinal
+No diretório do projeto executar o seguinte comando no temrinal
+```
 mvn spring-boot run
-
+```
 
